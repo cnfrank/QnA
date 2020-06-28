@@ -22,10 +22,10 @@ export const HomePage = () => (
             <PageTitle>Unanswered Questions</PageTitle>
             <PrimaryButton>Ask a question</PrimaryButton>
         </div>
-        <QuestionList
+        {/* <QuestionList
             data={getUnansweredQuestions()}
             renderItem={renderQuestion}
-        />
+        /> */}
         ;
     </Page>
 );
