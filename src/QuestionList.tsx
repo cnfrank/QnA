@@ -1,4 +1,6 @@
-import React,{ FC } from 'react';
+import React from 'react';
+import { FC } from 'react';
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { gray5, accent2 } from './Styles';
@@ -7,11 +9,12 @@ import { Question } from './Question';
 
 interface Props {
     data: QuestionData[];
+    renderItem?: (item: QuestionData) => JSX.Element;
 }
 
 // export const QuestionList: FC<Props> = (props) => null;
 
-export const QuestionList: FC<Props> = ({ data }) => (
+export const QuestionList: FC<Props> = ({ data, renderItem }) => (
     <ul
         css={css`
             list-style: none;
@@ -34,7 +37,11 @@ export const QuestionList: FC<Props> = ({ data }) => (
                     }
                 `}
             >
-                <Question data={question} />
+                {renderItem ? (
+                    renderItem(question)
+                ) : (
+                    <Question data={question} />
+                )}
             </li>
         ))}
     </ul>
